@@ -637,12 +637,12 @@ const Customers = () => {
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               We're onboarding hardware teams in cohorts. Join the waitlist to be one of the first to try it.
             </p>
-            <Button
+            {/* <Button
               className="mt-8 px-8 py-6 text-base md:text-lg bg-white text-black hover:bg-gray-100 hover:scale-[1.02] transition-all duration-500 rounded-lg font-medium shadow-sm hover:shadow-md"
               onClick={() => { window.location.href = "https://app.openplanai.com/"; }}
             >
               Sign In
-            </Button>
+            </Button> */}
             <p className="mt-6 text-xs text-gray-500">
               No spam. We'll only email you when it's your turn.
             </p>
