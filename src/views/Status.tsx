@@ -193,12 +193,12 @@ const Status = () => {
               We are slowly expanding our beta program. Join the waitlist to get notified as soon as a spot opens up for your team.
             </p>
             <div className="flex justify-center gap-4">
-              <button
+              {/* <button
                 className="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold transition-all shadow-lg shadow-blue-600/20"
                 onClick={() => { window.location.href = "https://app.openplanai.com/"; }}
               >
                 Sign In
-              </button>
+              </button> */}
               <button className="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 font-bold transition-all">
                 Read the Docs
               </button>

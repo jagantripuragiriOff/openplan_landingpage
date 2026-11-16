@@ -72,13 +72,13 @@ const PreFooterCTA = () => {
 
             {/* CTA Buttons */}
             <div className="relative flex flex-col gap-3">
-              <Button
+              {/* <Button
                 size="lg"
                 className="w-full h-12 px-7 rounded-[10px] text-[15px] font-medium bg-[#ffffff] text-[#0f1626] hover:bg-[#eef3fb]"
                 onClick={() => { window.location.href = "https://app.openplanai.com/"; }}
               >
                 Sign In
-              </Button>
+              </Button> */}
               <Button
                 variant="outline"
                 size="lg"
@@ -138,13 +138,13 @@ const PreFooterCTA = () => {
                     Start building with OpenPlan
                   </h3>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button
+                    {/* <Button
                       size="lg"
                       className="h-12 px-7 rounded-[10px] text-[15px] font-medium bg-[#ffffff] text-[#0f1626] hover:bg-[#eef3fb]"
                       onClick={() => { window.location.href = "https://app.openplanai.com/"; }}
                     >
                       Sign In
-                    </Button>
+                    </Button> */}
                     <Button
                       variant="outline"
                       size="lg"
