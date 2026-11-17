@@ -226,10 +226,10 @@ export const comparison: Group[] = [
         { value: "India by default", note: "EU or US cell +$1,000 / month. Single-tenant +$3,000 / month plus $5,000 setup." },
       ),
       row(
-        "Compliance packs",
+        "Compliance",
         false,
-        false,
-        { value: "ISO 13485 / AS9100 templates", roadmap: true },
+        "Compliance support",
+        { value: "Compliance support", note: "ISO 13485 / AS9100 templates", roadmap: true },
         { value: "21 CFR Part 11 e-signatures and audit trail", note: "ISO 13485 and AS9100 on the roadmap. ITAR not offered." },
       ),
     ],
