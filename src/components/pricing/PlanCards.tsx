@@ -3,6 +3,7 @@
 // Plan cards as a spec sheet: Free, Pro Small and Pro Team on one hairline-ruled row, Pro Small as
 // the dark, raised column, and Enterprise as a full-width plate underneath. Shared by the home page
 // pricing section and the /pricing detail page.
+import { useId } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useNavigate } from "@/lib/router";
@@ -22,6 +23,9 @@ export function Cross({ className }: { className: string }) {
 }
 
 export function BillingSwitch({ yearly, onChange }: { yearly: boolean; onChange: (yearly: boolean) => void }) {
+  // Each switch needs its own layoutId: /pricing renders two, and a shared id makes framer
+  // treat them as one pill, so the highlight jumps to the other switch.
+  const pillId = `billing-pill-${useId()}`;
   return (
     <div role="radiogroup" aria-label="Billing period" className="inline-flex border border-black/[0.1] bg-white p-[3px]">
       {([false, true] as const).map((isYearly) => {
@@ -37,7 +41,7 @@ export function BillingSwitch({ yearly, onChange }: { yearly: boolean; onChange:
           >
             {on && (
               <motion.span
-                layoutId="billing-pill"
+                layoutId={pillId}
                 className="absolute inset-0 bg-brand-ink"
                 transition={{ type: "spring", stiffness: 420, damping: 36 }}
               />
