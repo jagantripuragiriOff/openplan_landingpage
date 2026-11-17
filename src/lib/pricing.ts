@@ -6,6 +6,27 @@ export type PlanId = "free" | "proSmall" | "proTeam" | "enterprise";
 
 export const PLAN_IDS: PlanId[] = ["free", "proSmall", "proTeam", "enterprise"];
 
+/** A figure and what it counts, e.g. "~1,000" "AI chat answers". */
+export type Coverage = { figure: string; label: string }[];
+
+/** What each plan's monthly token allowance covers: ~5K per chat answer, ~40K per BOM or architect run,
+ * ~50K per change proposal. Shared by the plan card tooltips and the comparison table. */
+const coverage = (chats: string, boms: string, proposals: string): Coverage => [
+  { figure: chats, label: "AI chat answers" },
+  { figure: boms, label: "BOM / architect runs" },
+  { figure: proposals, label: "Agentic change proposals" },
+];
+
+export const tokenCoverage: Record<PlanId, Coverage> = {
+  free: coverage("~1,000", "~125", "~100"),
+  proSmall: coverage("~6,000", "~750", "~600"),
+  proTeam: coverage("~12,000", "~1,500", "~1,200"),
+  enterprise: coverage("~120,000", "~15,000", "~12,000"),
+};
+
+/** A card feature: plain text, or text with a "?" tooltip listing what it covers. */
+export type Highlight = string | { text: string; tip: Coverage };
+
 export type Plan = {
   id: PlanId;
   name: string;
@@ -17,7 +38,7 @@ export type Plan = {
   cadence: string;
   note: { monthly: string; yearly: string };
   /** The short list shown on the home page cards. */
-  highlights: string[];
+  highlights: Highlight[];
   cta: string;
   href: string;
 };
@@ -34,7 +55,7 @@ export const plans: Record<PlanId, Plan> = {
       "Up to 5 users",
       "1 active project",
       "5 GB workspace",
-      "5M AI tokens / month",
+      { text: "5M AI tokens / month", tip: tokenCoverage.free },
       "Limited AI capabilities",
       "Limited integrations",
       "Community support",
@@ -54,7 +75,7 @@ export const plans: Record<PlanId, Plan> = {
       "Minimum 2 projects",
       "Add more projects any time",
       "50 GB storage per project",
-      "30M AI tokens / project / month",
+      { text: "30M AI tokens / project / month", tip: tokenCoverage.proSmall },
       "Unlimited integrations",
       "Compliance support",
       "Dedicated support",
@@ -74,7 +95,7 @@ export const plans: Record<PlanId, Plan> = {
       "Minimum 3 projects",
       "Add more projects any time",
       "100 GB storage per project",
-      "60M AI tokens / project / month",
+      { text: "60M AI tokens / project / month", tip: tokenCoverage.proTeam },
       "Unlimited integrations",
       "Compliance support",
       "Dedicated support, under 3 hours",
@@ -92,7 +113,7 @@ export const plans: Record<PlanId, Plan> = {
     highlights: [
       "15 projects included, then $99 / project / month",
       "150 users included",
-      "600M AI tokens / organization / month, pooled",
+      { text: "600M AI tokens / organization / month, pooled", tip: tokenCoverage.enterprise },
       "All AI models, or bring your own provider key",
       "2 TB pooled storage, plus 100 GB per extra project",
       "SAML and SCIM",
@@ -114,16 +135,7 @@ export type Cell =
   | boolean
   | { value: string; note?: string; roadmap?: boolean }
   /** A short stacked list: a figure and what it counts. */
-  | { lines: { figure: string; label: string }[] };
-
-/** What a token allowance covers: ~5K per chat answer, ~40K per BOM or architect generation, ~50K per change proposal. */
-const covers = (chats: string, boms: string, proposals: string): Cell => ({
-  lines: [
-    { figure: chats, label: "AI chat answers" },
-    { figure: boms, label: "BOM / architect runs" },
-    { figure: proposals, label: "Agentic change proposals" },
-  ],
-});
+  | { lines: Coverage };
 
 export type Row = { label: string; hint?: string; values: Record<PlanId, Cell> };
 export type Group = { title: string; rows: Row[] };
@@ -176,10 +188,10 @@ export const comparison: Group[] = [
       ),
       row(
         "What your tokens cover",
-        covers("~1,000", "~125", "~100"),
-        covers("~6,000", "~750", "~600"),
-        covers("~12,000", "~1,500", "~1,200"),
-        covers("~120,000", "~15,000", "~12,000"),
+        { lines: tokenCoverage.free },
+        { lines: tokenCoverage.proSmall },
+        { lines: tokenCoverage.proTeam },
+        { lines: tokenCoverage.enterprise },
         "Approximate, per month",
       ),
       row(

@@ -3,12 +3,13 @@
 // Plan cards as a spec sheet: Free, Starter and Pro on one hairline-ruled row, Starter as
 // the dark, raised column, and Enterprise as a full-width plate underneath. Shared by the home page
 // pricing section and the /pricing detail page.
-import { useId } from "react";
+import { useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CircleHelp } from "lucide-react";
 import { useNavigate } from "@/lib/router";
 import { revealEase } from "@/components/motion/BlurReveal";
-import { plans, type Plan } from "@/lib/pricing";
+import { plans, type Coverage, type Highlight, type Plan } from "@/lib/pricing";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 type Period = "monthly" | "yearly";
 
@@ -106,10 +107,48 @@ function Cta({ plan, dark }: { plan: Plan; dark: boolean }) {
   );
 }
 
-function Features({ items, dark, columns = 1 }: { items: string[]; dark: boolean; columns?: 1 | 2 }) {
+/** "?" after a feature: hover, focus or tap to see what the allowance covers. */
+function CoverageTip({ tip, label, dark }: { tip: Coverage; label: string; dark: boolean }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Tooltip open={open} onOpenChange={setOpen} delayDuration={80}>
+      <TooltipTrigger asChild>
+        <button
+          type="button"
+          aria-label={`What ${label} covers`}
+          onClick={() => setOpen((o) => !o)}
+          className={`relative top-[3px] inline-flex shrink-0 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 ${
+            dark ? "text-white/40 hover:text-white" : "text-neutral-400 hover:text-brand-ink"
+          }`}
+        >
+          <CircleHelp className="h-4 w-4" strokeWidth={1.75} />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent
+        side="top"
+        sideOffset={8}
+        className="rounded-none border border-white/10 bg-[#0A0A0B] px-4 py-3 text-white shadow-[0_16px_40px_-12px_rgba(0,0,0,0.45)]"
+      >
+        <p className="m-0 font-mono text-[10.5px] uppercase tracking-[0.12em] text-white/45">Covers about, per month</p>
+        <ul className="m-0 mt-2.5 list-none space-y-1.5 p-0">
+          {tip.map((l) => (
+            <li key={l.label} className="flex items-baseline justify-between gap-6 text-[13px]">
+              <span className="text-white/70">{l.label}</span>
+              <span className="font-medium tabular-nums text-white">{l.figure}</span>
+            </li>
+          ))}
+        </ul>
+      </TooltipContent>
+    </Tooltip>
+  );
+}
+
+function Features({ items, dark, columns = 1 }: { items: Highlight[]; dark: boolean; columns?: 1 | 2 }) {
   return (
     <ul className={`m-0 mt-4 list-none p-0 ${columns === 2 ? "sm:grid sm:grid-cols-2 sm:gap-x-8" : ""}`}>
-      {items.map((feature) => (
+      {items.map((item) => {
+        const feature = typeof item === "string" ? item : item.text;
+        return (
         <li
           key={feature}
           className={`flex items-baseline gap-3 border-b py-[11px] text-[14.5px] leading-snug ${columns === 1 ? "last:border-b-0" : ""} ${
@@ -117,9 +156,21 @@ function Features({ items, dark, columns = 1 }: { items: string[]; dark: boolean
           }`}
         >
           <span aria-hidden className={`relative top-[-2px] h-[7px] w-[7px] shrink-0 ${dark ? "bg-[#7C9BFF]" : "border border-neutral-400"}`} />
-          {feature}
+          {typeof item === "string" ? (
+            feature
+          ) : (
+            // keep the "?" glued to the last word so it never wraps onto a line of its own
+            <span>
+              {feature.slice(0, feature.lastIndexOf(" ") + 1)}
+              <span className="whitespace-nowrap">
+                {feature.slice(feature.lastIndexOf(" ") + 1)}{" "}
+                <CoverageTip tip={item.tip} label={feature} dark={dark} />
+              </span>
+            </span>
+          )}
         </li>
-      ))}
+        );
+      })}
     </ul>
   );
 }
