@@ -219,13 +219,6 @@ export const comparison: Group[] = [
         { value: "P1 in 1 hour (24×7), P2 in 4 hours", note: "Named CSM" },
       ),
       row(
-        "Data residency",
-        "India (Mumbai)",
-        "India",
-        "India",
-        { value: "India by default", note: "EU or US cell +$1,000 / month. Single-tenant +$3,000 / month plus $5,000 setup." },
-      ),
-      row(
         "Compliance",
         false,
         "Compliance support",
