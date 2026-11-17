@@ -50,7 +50,7 @@ const Pricing = () => {
 
           {/* Foot */}
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4 font-mono text-[11.5px] uppercase tracking-[0.1em] text-neutral-400">
-            <span>Prices in USD · Taxes may apply · INR pricing available</span>
+            <span>Prices in USD · Taxes may apply</span>
             <button
               type="button"
               onClick={() => navigate("/pricing")}

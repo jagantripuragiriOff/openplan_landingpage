@@ -130,14 +130,6 @@ export const comparison: Group[] = [
       row("Annual billing", "$0", "$49 / project / month", "$79 / project / month", { value: "From $3,000 / month", note: "From $36,000 / year" }),
       row("Monthly billing", "$0", "$59 / project / month", "$95 / project / month", "Annual only"),
       row(
-        "India pricing",
-        "₹0",
-        { value: "₹2,999 / project", note: "₹3,539 incl. 18% GST" },
-        { value: "₹4,999 / project", note: "₹5,899 incl. 18% GST" },
-        { value: "₹1,85,000 / month", note: "₹2,18,300 incl. 18% GST" },
-        "INR, excluding GST",
-      ),
-      row(
         "Minimum projects",
         "1 active project",
         { value: "2 projects", note: "$98 / month minimum" },
