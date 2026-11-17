@@ -141,7 +141,13 @@ export type Cell =
   /** A short stacked list: a figure and what it counts. */
   | { lines: Coverage };
 
-export type Row = { label: string; hint?: string; values: Record<PlanId, Cell> };
+export type Row = {
+  label: string;
+  hint?: string;
+  values: Record<PlanId, Cell>;
+  /** Shown instead when the billing switch is on Monthly (the default values are the yearly ones). */
+  monthly?: { label?: string; values: Record<PlanId, Cell> };
+};
 export type Group = { title: string; rows: Row[] };
 
 const row = (label: string, free: Cell, proSmall: Cell, proTeam: Cell, enterprise: Cell, hint?: string): Row => ({
@@ -152,16 +158,25 @@ const row = (label: string, free: Cell, proSmall: Cell, proTeam: Cell, enterpris
 
 export const comparison: Group[] = [
   {
-    title: "Price",
+    title: "Projects",
     rows: [
-      row("Annual billing", "$0", "$49 / project / month", "$79 / project / month", { value: "Custom", note: "Annual agreement, priced with our team" }),
-      row(
-        "Minimum projects",
-        "1 active project",
-        { value: "2 projects", note: "$98 / month minimum" },
-        { value: "3 projects", note: "$237 / month minimum" },
-        "15 projects included",
-      ),
+      {
+        ...row(
+          "Minimum projects",
+          "1 active project",
+          { value: "2 projects", note: "$98 / month minimum" },
+          { value: "3 projects", note: "$237 / month minimum" },
+          "15 projects included",
+        ),
+        monthly: {
+          values: {
+            free: "1 active project",
+            proSmall: { value: "2 projects", note: "$118 / month minimum" },
+            proTeam: { value: "3 projects", note: "$285 / month minimum" },
+            enterprise: "15 projects included",
+          },
+        },
+      },
       row("Extra projects", false, "At the per-project price", "At the per-project price", "$99 / project / month"),
       row(
         "Volume discount",

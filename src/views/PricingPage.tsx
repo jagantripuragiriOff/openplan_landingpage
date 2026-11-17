@@ -165,8 +165,12 @@ function Comparison({ yearly, onYearlyChange }: { yearly: boolean; onYearlyChang
             <h3 className="m-0 font-mono text-[12px] font-normal uppercase tracking-[0.12em] text-brand-ink">{group.title}</h3>
           </div>
           <div role="table" aria-label={group.title}>
-            {group.rows.map((r) => (
-              <div key={r.label} role="row" className={`${GRID} border-b border-black/[0.06] transition-colors hover:bg-black/[0.015]`}>
+            {group.rows.map((base) => {
+              // rows with a monthly variant follow the billing switch
+              const alt = !yearly ? base.monthly : undefined;
+              const r = { ...base, label: alt?.label ?? base.label, values: alt?.values ?? base.values };
+              return (
+              <div key={base.label} role="row" className={`${GRID} border-b border-black/[0.06] transition-colors hover:bg-black/[0.015]`}>
                 <div role="rowheader" className="flex flex-col justify-center gap-1 px-4 py-4 md:px-5">
                   <span className="text-[14.5px] leading-snug text-neutral-700">{r.label}</span>
                   {r.hint && <span className="font-mono text-[11px] tracking-[0.02em] text-neutral-400">{r.hint}</span>}
@@ -181,7 +185,8 @@ function Comparison({ yearly, onYearlyChange }: { yearly: boolean; onYearlyChang
                   </div>
                 ))}
               </div>
-            ))}
+              );
+            })}
           </div>
         </Fragment>
       ))}
