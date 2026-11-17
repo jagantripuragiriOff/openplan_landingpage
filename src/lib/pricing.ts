@@ -115,7 +115,7 @@ export const plans: Record<PlanId, Plan> = {
     cadence: "",
     note: { monthly: "Annual agreement · Priced with our team", yearly: "Annual agreement · Priced with our team" },
     highlights: [
-      "15 projects included, then $99 / project / month",
+      "Unlimited projects",
       "150 users included",
       { text: "600M AI tokens / organization / month, pooled", tip: tokenCoverage.enterprise },
       "All AI models, or bring your own provider key",
@@ -166,18 +166,18 @@ export const comparison: Group[] = [
           "1 active project",
           { value: "2 projects", note: "$98 / month minimum" },
           { value: "3 projects", note: "$237 / month minimum" },
-          "15 projects included",
+          "Unlimited projects",
         ),
         monthly: {
           values: {
             free: "1 active project",
             proSmall: { value: "2 projects", note: "$118 / month minimum" },
             proTeam: { value: "3 projects", note: "$285 / month minimum" },
-            enterprise: "15 projects included",
+            enterprise: "Unlimited projects",
           },
         },
       },
-      row("Extra projects", false, "At the per-project price", "At the per-project price", "$99 / project / month"),
+      row("Extra projects", false, "At the per-project price", "At the per-project price", "Included"),
       row(
         "Volume discount",
         false,
