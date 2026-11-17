@@ -93,7 +93,7 @@ export const plans: Record<PlanId, Plan> = {
       "15 projects included, then $99 / project / month",
       "150 users included",
       "600M AI tokens / organization / month, pooled",
-      "All models, or bring your own Anthropic or Bedrock key",
+      "All AI models, or bring your own provider key",
       "2 TB pooled storage, plus 100 GB per extra project",
       "SAML and SCIM",
       "99.9% uptime SLA with service credits",
@@ -163,10 +163,10 @@ export const comparison: Group[] = [
       ),
       row(
         "Models",
-        "Claude Haiku 5.5",
-        { value: "Haiku by default", note: "Sonnet for architecture and BOM generation (20×)" },
-        { value: "Haiku, Sonnet and Opus", note: "Opus admin-enabled (40×)" },
-        { value: "All models", note: "Option to bring your own Anthropic or Bedrock key" },
+        "Standard model",
+        { value: "Standard model by default", note: "Advanced model for architecture and BOM generation (20×)" },
+        { value: "Standard, Advanced and Premium models", note: "Premium admin-enabled (40×)" },
+        { value: "All models", note: "Option to bring your own provider key" },
       ),
       row("Token top-ups", false, true, true, "Committed token pool"),
       row("AI rate limit", "10 requests / min per user", "30 requests / min per user", "60 requests / min per user", "Custom"),
@@ -239,10 +239,10 @@ export const comparison: Group[] = [
 /* ---------------- Tokens and top-ups ---------------- */
 
 export const tokenRates: { model: string; detail: string; rate: string }[] = [
-  { model: "Claude Haiku 5.5", detail: "1 token processed", rate: "1×" },
-  { model: "Claude Sonnet 5.5", detail: "Architecture, BOM generation", rate: "20×" },
-  { model: "Claude Opus 5.5", detail: "Admin-enabled", rate: "40×" },
-  { model: "Long prompts on Haiku", detail: "Prompts over 100K tokens", rate: "5×" },
+  { model: "Standard model", detail: "Everyday AI · 1 token processed", rate: "1×" },
+  { model: "Advanced model", detail: "Architecture, BOM generation", rate: "20×" },
+  { model: "Premium model", detail: "Admin-enabled", rate: "40×" },
+  { model: "Long prompts", detail: "Over 100K tokens on the Standard model", rate: "5×" },
   { model: "Cached input", detail: "Repeated context", rate: "0.1×" },
   { model: "Batch jobs", detail: "Run in the background", rate: "0.5×" },
 ];
@@ -274,7 +274,7 @@ export const pricingFaqs: { q: string; a: string }[] = [
   },
   {
     q: "What is a Standard token?",
-    a: "One Standard token is one token processed by Claude Haiku 5.5. Sonnet 5.5 counts as 20× and Opus 5.5 as 40×. Prompts over 100K tokens on Haiku count as 5×, cached input as 0.1× and batch jobs as 0.5×. Included tokens reset monthly, and the dashboard token counter shows usage by project, user and feature.",
+    a: "One Standard token is one token processed by our Standard AI model. The Advanced model counts as 20× and the Premium model as 40×. Prompts over 100K tokens on the Standard model count as 5×, cached input as 0.1× and batch jobs as 0.5×. Included tokens reset monthly, and the dashboard token counter shows usage by project, user and feature.",
   },
   {
     q: "What happens if we run out of tokens?",
