@@ -165,7 +165,7 @@ export default function PlanCards({ yearly, detailHref = "/pricing#compare" }: {
               key={plan.id}
               className={`relative flex flex-col border-b border-black/[0.1] ${i > 0 ? "md:border-l" : ""} ${
                 dark
-                  ? "z-[1] bg-brand-ink text-white md:-mt-6 md:mb-[-1px] md:border-l-0 md:shadow-[0_40px_80px_-40px_rgba(47,91,255,0.55)]"
+                  ? "z-[1] bg-brand-ink text-white md:-mt-6 md:border-b-0 md:border-l-0 md:shadow-[0_-24px_60px_-36px_rgba(47,91,255,0.5)]"
                   : "bg-white"
               }`}
             >
@@ -214,8 +214,10 @@ export default function PlanCards({ yearly, detailHref = "/pricing#compare" }: {
         })}
       </div>
 
-      {/* Enterprise: one full-width plate under the three plans */}
-      <article className="relative grid border-b border-black/[0.1] bg-[#FAFAFB] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+      {/* Enterprise: a separate full-width plate under the three plans */}
+      <article className="relative mt-[clamp(32px,4vw,56px)] grid border-y border-black/[0.1] bg-[#FAFAFB] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <Cross className="-left-[5px] -top-[5px] z-[1]" />
+        <Cross className="-right-[5px] -top-[5px] z-[1]" />
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:28px_28px] [mask-image:linear-gradient(to_right,black,transparent_70%)]" />
         <div className={`relative ${CARD_X} pb-9 pt-[clamp(28px,3vw,40px)] lg:border-r lg:border-black/[0.08]`}>
           <div className="flex items-center justify-between gap-3 font-mono text-[11.5px] uppercase leading-none tracking-[0.1em]">
