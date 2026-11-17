@@ -92,7 +92,6 @@ function CellValue({ cell, highlight }: { cell: Cell; highlight: boolean }) {
 }
 
 function Comparison({ yearly }: { yearly: boolean }) {
-  const navigate = useNavigate();
   const [mobilePlan, setMobilePlan] = useState<PlanId>("proSmall");
   const period = yearly ? "yearly" : "monthly";
   const show = (id: PlanId) => (id === mobilePlan ? "flex" : "hidden md:flex");
@@ -126,7 +125,7 @@ function Comparison({ yearly }: { yearly: boolean }) {
             const plan = plans[id];
             const hl = id === "proSmall";
             return (
-              <div key={id} className={`${show(id)} flex-col gap-3 border-l border-black/[0.08] px-4 py-4 md:px-5`}>
+              <div key={id} className={`${show(id)} flex-col justify-end border-l border-black/[0.08] px-4 py-4 md:px-5`}>
                 <div>
                   <p className={`m-0 font-mono text-[11.5px] uppercase tracking-[0.1em] ${hl ? "text-brand" : "text-brand-ink"}`}>{plan.name}</p>
                   <p className="mb-0 mt-1.5 text-[13.5px] text-neutral-500">
@@ -134,16 +133,6 @@ function Comparison({ yearly }: { yearly: boolean }) {
                     <span className="font-medium tabular-nums text-brand-ink">{plan.price[period]}</span> {plan.cadence}
                   </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => navigate(plan.href)}
-                  className={`hidden h-9 items-center justify-between px-3 font-mono text-[11px] uppercase tracking-[0.1em] transition-colors duration-300 lg:flex ${
-                    hl ? "bg-brand text-white hover:bg-brand-hover" : "border border-black/[0.14] text-brand-ink hover:border-brand-ink hover:bg-brand-ink hover:text-white"
-                  }`}
-                >
-                  {plan.cta}
-                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                </button>
               </div>
             );
           })}
