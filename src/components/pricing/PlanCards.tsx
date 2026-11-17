@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, CircleHelp } from "lucide-react";
 import { useNavigate } from "@/lib/router";
 import { revealEase } from "@/components/motion/BlurReveal";
-import { plans, type Coverage, type Highlight, type Plan } from "@/lib/pricing";
+import { NOT_INCLUDED, plans, type Coverage, type Highlight, type Plan } from "@/lib/pricing";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 type Period = "monthly" | "yearly";
@@ -155,8 +155,16 @@ function Features({ items, dark, columns = 1 }: { items: Highlight[]; dark: bool
             dark ? "border-white/[0.07] text-white/85" : "border-black/[0.05] text-neutral-700"
           }`}
         >
-          <span aria-hidden className={`relative top-[-2px] h-[7px] w-[7px] shrink-0 ${dark ? "bg-[#7C9BFF]" : "border border-neutral-400"}`} />
-          {typeof item === "string" ? (
+          <span
+            aria-hidden
+            className={`relative top-[-2px] h-[7px] w-[7px] shrink-0 ${item === NOT_INCLUDED ? "invisible" : ""} ${dark ? "bg-[#7C9BFF]" : "border border-neutral-400"}`}
+          />
+          {item === NOT_INCLUDED ? (
+            <>
+              <span aria-hidden className={dark ? "text-white/25" : "text-neutral-300"}>—</span>
+              <span className="sr-only">Not included</span>
+            </>
+          ) : typeof item === "string" ? (
             feature
           ) : (
             // keep the "?" glued to the last word so it never wraps onto a line of its own

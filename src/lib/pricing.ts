@@ -24,6 +24,9 @@ export const tokenCoverage: Record<PlanId, Coverage> = {
   enterprise: coverage("~120,000", "~15,000", "~12,000"),
 };
 
+/** A placeholder card row, so the plan cards line up row by row. */
+export const NOT_INCLUDED = "—";
+
 /** A card feature: plain text, or text with a "?" tooltip listing what it covers. */
 export type Highlight = string | { text: string; tip: Coverage };
 
@@ -54,10 +57,11 @@ export const plans: Record<PlanId, Plan> = {
     highlights: [
       "Up to 5 users",
       "1 active project",
+      NOT_INCLUDED, // lines up with "Add more projects any time" on Starter and Pro
       "5 GB workspace",
       { text: "5M AI tokens / month", tip: tokenCoverage.free },
-      "Limited AI capabilities",
       "Limited integrations",
+      "Limited AI capabilities",
       "Community support",
     ],
     cta: "Start for free",
