@@ -150,7 +150,7 @@ function DetailLink({ href, dark, label = "See all features" }: { href: string; 
 
 const CARD_X = "px-[clamp(20px,2.4vw,36px)]";
 
-export default function PlanCards({ yearly, detailHref = "/pricing" }: { yearly: boolean; detailHref?: string }) {
+export default function PlanCards({ yearly, detailHref = "/pricing#compare" }: { yearly: boolean; detailHref?: string }) {
   const period: Period = yearly ? "yearly" : "monthly";
   const row = [plans.free, plans.proSmall, plans.proTeam];
   const enterprise = plans.enterprise;

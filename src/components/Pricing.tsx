@@ -53,7 +53,7 @@ const Pricing = () => {
             <span>Prices in USD · Taxes may apply</span>
             <button
               type="button"
-              onClick={() => navigate("/pricing")}
+              onClick={() => navigate("/pricing#compare")}
               className="group inline-flex items-center gap-1.5 text-brand-ink transition-colors hover:text-brand"
             >
               Compare all plans in detail
