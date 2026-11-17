@@ -91,15 +91,19 @@ function CellValue({ cell, highlight }: { cell: Cell; highlight: boolean }) {
   );
 }
 
-function Comparison({ yearly }: { yearly: boolean }) {
+function Comparison({ yearly, onYearlyChange }: { yearly: boolean; onYearlyChange: (yearly: boolean) => void }) {
   const [mobilePlan, setMobilePlan] = useState<PlanId>("proSmall");
   const period = yearly ? "yearly" : "monthly";
   const show = (id: PlanId) => (id === mobilePlan ? "flex" : "hidden md:flex");
 
   return (
-    <div className="relative mt-[clamp(40px,5vw,64px)]">
-      {/* Sticky plan header (sits under the fixed navigation) */}
-      <div className="sticky top-16 z-20 border-y border-black/[0.1] bg-white/90 backdrop-blur-xl backdrop-saturate-150 md:top-[68px]">
+    <div className="relative mt-3">
+      {/* Sticky billing switch + plan header (sits under the fixed navigation) */}
+      <div className="sticky top-16 z-20 bg-white/90 backdrop-blur-xl backdrop-saturate-150 md:top-[68px]">
+        <div className="flex pb-6 pt-3 md:justify-end">
+          <BillingSwitch yearly={yearly} onChange={onYearlyChange} />
+        </div>
+        <div className="border-y border-black/[0.1]">
         {/* Phones: pick the plan column to compare */}
         <div role="tablist" aria-label="Plan to compare" className="grid grid-cols-4 border-b border-black/[0.08] md:hidden">
           {PLAN_IDS.map((id) => {
@@ -136,6 +140,7 @@ function Comparison({ yearly }: { yearly: boolean }) {
               </div>
             );
           })}
+        </div>
         </div>
       </div>
 
@@ -291,10 +296,7 @@ const PricingPage = () => {
                 muted="line by line."
                 lede="Prices, allowances, capacity, security and support for each plan. Pro Small and Pro Team allowances are per project and pooled across your organization."
               />
-              <div className="mt-6 flex md:justify-end">
-                <BillingSwitch yearly={yearly} onChange={setYearly} />
-              </div>
-              <Comparison yearly={yearly} />
+              <Comparison yearly={yearly} onYearlyChange={setYearly} />
             </div>
           </div>
         </section>
