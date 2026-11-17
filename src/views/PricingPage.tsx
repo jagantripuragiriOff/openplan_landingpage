@@ -80,6 +80,16 @@ function CellValue({ cell, highlight }: { cell: Cell; highlight: boolean }) {
       </>
     );
   if (typeof cell === "string") return <span className="text-[14.5px] leading-snug text-brand-ink">{cell}</span>;
+  if ("lines" in cell)
+    return (
+      <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
+        {cell.lines.map((l) => (
+          <li key={l.label} className="text-[13.5px] leading-snug text-neutral-500">
+            <span className="font-medium tabular-nums text-brand-ink">{l.figure}</span> {l.label}
+          </li>
+        ))}
+      </ul>
+    );
   return (
     <span className="flex flex-col gap-1.5">
       <span className="text-[14.5px] leading-snug text-brand-ink">{cell.value}</span>

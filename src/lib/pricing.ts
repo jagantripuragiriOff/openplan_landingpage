@@ -109,7 +109,21 @@ export const plans: Record<PlanId, Plan> = {
 /* ---------------- Comparison table ---------------- */
 
 /** A cell: plain text, true (included) / false (not included), or text with a small note. */
-export type Cell = string | boolean | { value: string; note?: string; roadmap?: boolean };
+export type Cell =
+  | string
+  | boolean
+  | { value: string; note?: string; roadmap?: boolean }
+  /** A short stacked list: a figure and what it counts. */
+  | { lines: { figure: string; label: string }[] };
+
+/** What a token allowance covers: ~5K per chat answer, ~40K per BOM or architect generation, ~50K per change proposal. */
+const covers = (chats: string, boms: string, proposals: string): Cell => ({
+  lines: [
+    { figure: chats, label: "AI chat answers" },
+    { figure: boms, label: "BOM / architect runs" },
+    { figure: proposals, label: "Agentic change proposals" },
+  ],
+});
 
 export type Row = { label: string; hint?: string; values: Record<PlanId, Cell> };
 export type Group = { title: string; rows: Row[] };
@@ -159,6 +173,14 @@ export const comparison: Group[] = [
         { value: "60M", note: "Per project / month, pooled" },
         { value: "600M", note: "Per organization / month, pooled" },
         "Standard tokens, reset monthly",
+      ),
+      row(
+        "What your tokens cover",
+        covers("~1,000", "~125", "~100"),
+        covers("~6,000", "~750", "~600"),
+        covers("~12,000", "~1,500", "~1,200"),
+        covers("~120,000", "~15,000", "~12,000"),
+        "Approximate, per month",
       ),
       row(
         "Models",
