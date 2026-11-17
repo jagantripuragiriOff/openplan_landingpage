@@ -125,7 +125,6 @@ export const comparison: Group[] = [
     title: "Price",
     rows: [
       row("Annual billing", "$0", "$49 / project / month", "$79 / project / month", { value: "Custom", note: "Annual agreement, priced with our team" }),
-      row("Monthly billing", "$0", "$59 / project / month", "$95 / project / month", "Annual only"),
       row(
         "Minimum projects",
         "1 active project",
@@ -183,17 +182,17 @@ export const comparison: Group[] = [
   {
     title: "Included capacity",
     rows: [
-      row("Requirements per project", "200", "2,500", "10,000", { value: "100,000", note: "Fair use" }),
-      row("BOMs per project", "3", "25", "100", { value: "Unlimited", note: "Fair use" }),
+      row("Requirements per project", "200", "2,500", "10,000", "100,000"),
+      row("BOMs per project", "3", "25", "100", "Unlimited"),
       row(
         "BOM lines per project",
         "500 parts total",
         { value: "25,000 per project", note: "5,000 per BOM" },
         { value: "100,000 per project", note: "20,000 per BOM" },
-        { value: "250,000 per project", note: "Fair use" },
+        "250,000 per project",
       ),
-      row("Parts library", "500", "10,000", "50,000", { value: "1M", note: "Fair use" }, "Per organization"),
-      row("ECOs", "10 / month", { value: "Unlimited", note: "Fair use: 200 / month" }, "Unlimited", "Unlimited"),
+      row("Parts library", "500", "10,000", "50,000", "1M", "Per organization"),
+      row("ECOs", "10 / month", "Unlimited", "Unlimited", "Unlimited"),
       row("Integrations", "Limited", "Unlimited", "Unlimited", "Unlimited, plus custom"),
       row("Version history", "30 days", "1 year", "3 years", "Unlimited"),
       row("Audit log retention", "30 days", { value: "1 year", note: "Exportable" }, "3 years", { value: "10 years", note: "Immutable" }),
