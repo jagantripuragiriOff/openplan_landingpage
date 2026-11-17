@@ -88,10 +88,9 @@ export const plans: Record<PlanId, Plan> = {
     id: "enterprise",
     name: "Enterprise",
     bestFor: "Governance, scale and a partner in the rollout.",
-    price: { monthly: "$3,000", yearly: "$3,000" },
-    prefix: "From",
-    cadence: "/ month",
-    note: { monthly: "Annual only · from $36,000 / year", yearly: "Annual agreement · from $36,000 / year" },
+    price: { monthly: "Custom", yearly: "Custom" },
+    cadence: "",
+    note: { monthly: "Annual agreement · Priced with our team", yearly: "Annual agreement · Priced with our team" },
     highlights: [
       "15 projects included, then $99 / project / month",
       "150 users included",
@@ -127,7 +126,7 @@ export const comparison: Group[] = [
   {
     title: "Price",
     rows: [
-      row("Annual billing", "$0", "$49 / project / month", "$79 / project / month", { value: "From $3,000 / month", note: "From $36,000 / year" }),
+      row("Annual billing", "$0", "$49 / project / month", "$79 / project / month", { value: "Custom", note: "Annual agreement, priced with our team" }),
       row("Monthly billing", "$0", "$59 / project / month", "$95 / project / month", "Annual only"),
       row(
         "Minimum projects",

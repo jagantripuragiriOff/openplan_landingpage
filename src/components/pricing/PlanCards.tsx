@@ -73,7 +73,7 @@ function Price({ plan, period, dark, size = "lg" }: { plan: Plan; period: Period
             {price}
           </motion.span>
         </AnimatePresence>
-        <span className={`mb-1 font-mono text-[12px] tracking-[0.02em] ${dark ? "text-white/50" : "text-neutral-500"}`}>{plan.cadence}</span>
+        {plan.cadence && <span className={`mb-1 font-mono text-[12px] tracking-[0.02em] ${dark ? "text-white/50" : "text-neutral-500"}`}>{plan.cadence}</span>}
         {struck && <span className={`mb-1 font-mono text-[12px] line-through ${dark ? "text-white/35" : "text-neutral-400"}`}>{struck}</span>}
       </div>
       <p className={`mb-0 mt-3 min-h-4 font-mono text-[11.5px] tracking-[0.02em] ${dark ? "text-white/45" : "text-neutral-400"}`}>{plan.note[period]}</p>

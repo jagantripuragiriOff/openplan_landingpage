@@ -448,7 +448,7 @@ const PricingPage = () => {
                 </p>
                 <h2 className="mb-0 mt-7 text-balance text-[clamp(2rem,3.6vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.04em]">
                   Governance, scale and a partner in the rollout.{" "}
-                  <span className="text-white/45">From $3,000 / month.</span>
+                  <span className="text-white/45">Priced for your programs.</span>
                 </h2>
                 <p className="mb-0 mt-6 max-w-[56ch] text-[16px] leading-[1.6] text-white/60">
                   15 projects, 150 users and 600M tokens included. SAML and SCIM, a 99.9% uptime SLA, a named CSM and
