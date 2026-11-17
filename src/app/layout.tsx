@@ -21,7 +21,7 @@ const GA_ID = "G-8Z892GP5SK";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://openplan.ai"),
-  title: "OpenPlan - Modern Ops for Hardware SaaS",
+  title: "OpenPlan - AI-Powered ops platform for modern hardware teams",
   description:
     "Streamline hardware development with our comprehensive SaaS platform. Project management, inventory tracking, compliance, and more for automotive, aerospace, pharma, and media companies.",
   authors: [{ name: "OpenPlan" }],
