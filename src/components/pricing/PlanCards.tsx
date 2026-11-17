@@ -1,6 +1,6 @@
 "use client";
 
-// Plan cards as a spec sheet: Free, Pro Small and Pro Team on one hairline-ruled row, Pro Small as
+// Plan cards as a spec sheet: Free, Starter and Pro on one hairline-ruled row, Starter as
 // the dark, raised column, and Enterprise as a full-width plate underneath. Shared by the home page
 // pricing section and the /pricing detail page.
 import { useId } from "react";
@@ -160,7 +160,7 @@ export default function PlanCards({ yearly, detailHref = "/pricing#compare" }: {
       <Cross className="-left-[5px] -top-[5px]" />
       <Cross className="-right-[5px] -top-[5px]" />
 
-      {/* Free, Pro Small, Pro Team */}
+      {/* Free, Starter, Pro */}
       <div className="grid md:grid-cols-3">
         {row.map((plan, i) => {
           const dark = plan.id === "proSmall";

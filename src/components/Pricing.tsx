@@ -1,6 +1,6 @@
 "use client";
 
-// Pricing as a spec sheet inside the page's railed frame: Free, Pro Small and Pro Team on one
+// Pricing as a spec sheet inside the page's railed frame: Free, Starter and Pro on one
 // hairline-ruled row with Enterprise as a full-width plate underneath. The full plan comparison
 // lives on /pricing. Mono labels, square corners, the house blue as accent.
 import { useState } from "react";

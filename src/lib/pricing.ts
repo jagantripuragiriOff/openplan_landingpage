@@ -39,12 +39,12 @@ export const plans: Record<PlanId, Plan> = {
       "Limited integrations",
       "Community support",
     ],
-    cta: "Get started",
+    cta: "Start for free",
     href: "/waitlist",
   },
   proSmall: {
     id: "proSmall",
-    name: "Pro Small",
+    name: "Starter",
     bestFor: "For a hardware team running its first few programs.",
     price: { monthly: "$59", yearly: "$49" },
     cadence: "/ project / month",
@@ -59,12 +59,12 @@ export const plans: Record<PlanId, Plan> = {
       "Compliance support",
       "Dedicated support",
     ],
-    cta: "Start Pro Small",
+    cta: "Get Starter",
     href: "/waitlist",
   },
   proTeam: {
     id: "proTeam",
-    name: "Pro Team",
+    name: "Pro",
     bestFor: "For growing teams shipping several products at once.",
     price: { monthly: "$95", yearly: "$79" },
     cadence: "/ project / month",
@@ -79,7 +79,7 @@ export const plans: Record<PlanId, Plan> = {
       "Compliance support",
       "Dedicated support, under 3 hours",
     ],
-    cta: "Start Pro Team",
+    cta: "Get Pro",
     href: "/waitlist",
   },
   enterprise: {
@@ -249,8 +249,8 @@ export const tokenRates: { model: string; detail: string; rate: string }[] = [
 
 export const tokenEstimates: { plan: string; allowance: string; actions: string }[] = [
   { plan: "Free", allowance: "5M per organization / month", actions: "About 1,000 AI chat answers" },
-  { plan: "Pro Small", allowance: "30M per project / month", actions: "About 6,000 AI chat answers or 750 BOM generations" },
-  { plan: "Pro Team", allowance: "60M per project / month", actions: "About 12,000 AI chat answers or 1,500 BOM generations" },
+  { plan: "Starter", allowance: "30M per project / month", actions: "About 6,000 AI chat answers or 750 BOM generations" },
+  { plan: "Pro", allowance: "60M per project / month", actions: "About 12,000 AI chat answers or 1,500 BOM generations" },
 ];
 
 export const topUps: { tokens: string; price: string; note?: string }[] = [
@@ -278,7 +278,7 @@ export const pricingFaqs: { q: string; a: string }[] = [
   },
   {
     q: "What happens if we run out of tokens?",
-    a: "On Pro Small and Pro Team you can buy top-up packs: 10M for $15, 50M for $65 or 200M for $220. Top-up tokens never expire while the account is active. Enterprise plans use a committed token pool.",
+    a: "On Starter and Pro you can buy top-up packs: 10M for $15, 50M for $65 or 200M for $220. Top-up tokens never expire while the account is active. Enterprise plans use a committed token pool.",
   },
   {
     q: "Can we add or remove projects mid-term?",
@@ -286,7 +286,7 @@ export const pricingFaqs: { q: string; a: string }[] = [
   },
   {
     q: "Is there a discount for many projects?",
-    a: "On Pro Small and Pro Team, projects 6–15 are 15% off and projects 16–30 are 25% off. Beyond 30 projects, Enterprise pricing is negotiated.",
+    a: "On Starter and Pro, projects 6–15 are 15% off and projects 16–30 are 25% off. Beyond 30 projects, Enterprise pricing is negotiated.",
   },
   {
     q: "Where is our data stored?",

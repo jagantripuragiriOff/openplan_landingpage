@@ -313,7 +313,7 @@ const PricingPage = () => {
                 crumb="Compare"
                 title="Every plan,"
                 muted="line by line."
-                lede="Prices, allowances, capacity, security and support for each plan. Pro Small and Pro Team allowances are per project and pooled across your organization."
+                lede="Prices, allowances, capacity, security and support for each plan. Starter and Pro allowances are per project and pooled across your organization."
               />
               <Comparison yearly={yearly} onYearlyChange={setYearly} />
             </div>
@@ -399,7 +399,7 @@ const PricingPage = () => {
                 crumb="Top-ups"
                 title="Need more AI?"
                 muted="Top up any time."
-                lede="Token packs are sold separately from plans and available on Pro Small, Pro Team and Enterprise. Top-up tokens never expire while your account is active."
+                lede="Token packs are sold separately from plans and available on Starter, Pro and Enterprise. Top-up tokens never expire while your account is active."
               />
               <BlurReveal y={14} blur={8} className="mt-[clamp(40px,5vw,64px)]">
                 <div className="relative grid border-t border-black/[0.1] sm:grid-cols-2 lg:grid-cols-4">
